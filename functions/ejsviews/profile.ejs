@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%- include('partials/header.ejs') %>
+
+    <title>Profile</title>
+  </head>
+  <body>
+    <%- include('partials/nav.ejs', {page: 'contact', user}) %>
+    
+    <h1>Profile</h1>
+    <table class="table table-stripped">
+      <tr>
+        <td>Display Name</td>
+        <td><%= user.displayName %></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%= user.email %></td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td><%= user.phoneNumber %></td>
+      </tr>
+      <tr>
+        <td>UID</td>
+        <td><%= user.uid %></td>
+      </tr>
+      <tr>
+        <td>Profile Image</td>
+        <td><img src="<%= user.photoURL %>"></td>
+      </tr>
+    </table>
+
+    <a href="/b/orderhistory" class="btn btn-primary">Order History</a>
+    <br>
+
+    <% if (!orders) { %>
+    <% } else { %>
+      <% orders.forEach(order => { %>
+        Order Date: <%= order.timestamp.toDate() %>
+        <table class="table table-stripped">
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Unit Price</th>
+            <th>Qty</th>
+          </tr>
+          <% for (let i = 0; i < order.cart.length; i++) { %>
+            <tr>
+              <td><img src="<%= order.cart[i].product.image_url %>" height="50" width="50"></td>
+              <td><%= order.cart[i].product.name %></td>
+              <td><%= order.cart[i].product.price %></td>
+              <td><%= order.cart[i].qty %></td>
+            </tr>
+          <% } %>
+        </table>
+      <% }) %>
+    <% } %>
+    
+
+    <%- include('partials/scripts.ejs') %>
+  </body>
+</html>

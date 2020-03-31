@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%- include('partials/header.ejs') %>
+
+    <title>ShoppingCart</title>
+  </head>
+  <body>
+    <%- include('partials/nav.ejs', {page: 'shoppingcart'}) %>
+
+    <h1>Shopping Cart Contents</h1>
+
+    <% if (message) { %>
+      <div style="color: red;"><h4><%= message %></h4></div>
+    <% } %>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Sub-Total</th>
+          <th scope="col">Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < cart.contents.length; i++) { %>
+        <tr>
+          <th scope="row"><img width=50 height=50 src="<%= cart.contents[i].product.image_url%>"></th>
+          <td><%= cart.contents[i].product.name %></td>
+          <td><%= cart.contents[i].product.price.toFixed(2) %></td>
+          <td><%= cart.contents[i].qty %></td>
+          <td><%= (cart.contents[i].qty * cart.contents[i].product.price).toFixed(2) %></td>
+          <td><%= cart.contents[i].product.summary %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <h2>TOTAL: <%= cart.getTotal().toFixed(2) %></h2>
+
+    <% if (cart.contents.length > 0) { %>
+      <div>
+        <form action="/b/checkout" method="post">
+          <button type="submit" class="btn btn-primary">Check Out</button>
+        </form>
+      </div>
+    <% } %>
+
+    <%- include('partials/scripts.ejs') %>
+  </body>
+</html>

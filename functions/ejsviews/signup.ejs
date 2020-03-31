@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%- include('partials/header.ejs') %>
+
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <%- include('partials/nav.ejs') %>
+
+  <!-- This is using the 'admin' SDK -->
+  <form class="form-signin" action="/admin/signup" method="post">
+    <h3>Create an account</h3>
+    <% if (error) { %>
+      <p style="color: red;"><%= error %></p>
+    <% } %>
+    <input type="email" class="form-control" name="email" placeholder="Email address">
+    <input type="password" class="form-control" name="password" placeholder="Password">
+    <input type="text" class="form-control" name="displayName" placeholder="Display Name">
+    <input type="tel" class="form-control" name="phoneNumber" placeholder="+1-222-333-4444">
+    <input type="text" class="form-control" name="photoURL" placeholder="Profile Image URL">
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+
+    <%- include('partials/scripts.ejs') %>
+  </body>
+</html>

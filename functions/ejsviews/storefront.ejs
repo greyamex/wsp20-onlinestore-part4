@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%- include('partials/header.ejs') %>
+
+    <title>Store Front</title>
+  </head>
+  <body>
+    <%- include('partials/nav.ejs', {page: 'storefront', user}) %>
+    <h1>My Store</h1>
+
+    <% if (error) { %>
+      <p style="color: red"><%= JSON.stringify(error) %></p>
+    <% } else { %>
+      <% for (let p of products) { %>
+        <div class="card" style="width: 18rem; display: inline-block">
+          <img src="<%= p.data.image_url %>>" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= p.data.name %></h5>
+            <p class="card-text">$(<%= p.data.price %>)<br><%= p.data.summary %></p>
+            <form action="/b/add2cart" method="post">
+              <input type="hidden" name="docId" value="<%= p.id %>">
+              <button type="submit" class="btn btn-primary">Add to ShoppingCart</button>
+            </form>
+          </div>
+        </div>
+      <% } %>
+    <% } %>
+
+    <%- include('partials/scripts.ejs') %>
+  </body>
+</html>
