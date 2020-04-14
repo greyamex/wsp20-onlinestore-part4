@@ -11,7 +11,7 @@
   </head>
   <body>
     <%- include('partials/nav.ejs', {page: 'storefront', user}) %>
-    <h1>My Store</h1>
+    <h1 style="margin-left: auto; margin-right: auto; padding: 20px;">My Store</h1>
 
     <% if (error) { %>
       <p style="color: red"><%= JSON.stringify(error) %></p>
