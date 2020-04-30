@@ -70,7 +70,8 @@ app.get('/', auth, async (req, res) => {  // Arrow: fn def is given directly -- 
     const coll = firebase.firestore().collection(Constants.COLL_PRODUCTS)
     try {
         let products = []
-        const snapshot = await coll.orderBy("name").get()
+        // ** created composite index for name and price fields **
+        const snapshot = await coll.orderBy("price", "desc").limit(5).get() // - - -- -- - - 
         snapshot.forEach(doc => {
             products.push({id: doc.id, data: doc.data()})
         })

@@ -22,11 +22,10 @@ async function show_page_secured() {
                         // add where clause for query:
                         // (look at index types documentation - boookmarked in WSP)
                         // (see: composite index, further down that page)
-                        //.where("name", "==", "YYYYYY")
-                        .orderBy('name')
-                        .limit(5)
+                        //.where("price", "==", 9999)
+                        //.where("name")
+                        //.orderBy("price")
                         .get()
-
         // read all the products from the collection
         snapshot.forEach( doc => {
             // read each key-value in document and then store it into a var
