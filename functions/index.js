@@ -21,7 +21,7 @@ app.set('views', './ejsviews')
 // frontend programming
 
 function frontendHandler(req, res) {
-    res.sendFile(__dirname.path.join('/prodadmin/prodadmin.html')) // send a file to the client
+    res.sendFile(path.join(__dirname, '/prodadmin/prodadmin.html')) // send a file to the client
 }
 
 app.get('/login', frontendHandler);
