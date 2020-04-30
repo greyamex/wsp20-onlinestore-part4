@@ -70,10 +70,22 @@ app.get('/', auth, async (req, res) => {  // Arrow: fn def is given directly -- 
     const coll = firebase.firestore().collection(Constants.COLL_PRODUCTS)
     try {
         let products = []
-        // ** created composite index for name and price fields **
-        const snapshot = await coll.orderBy("price", "desc").limit(5).get() // - - -- -- - - 
-        snapshot.forEach(doc => {
-            products.push({id: doc.id, data: doc.data()})
+        // this is a query:
+        const snapshot = await coll.orderBy("price", "desc").limit(5).get()
+        // - - -- -- - - pagination happens here: (?)
+        // let paginate = first.get()
+        //     .then((snapshot) => {
+        //         let last = snapshot.docs[snapshot.docs.length - 1]
+        //         let next = coll.orderBy("price", "desc").startAfter(last.data().population).limit(5)
+        //         return next.get().then((snapshot) => {
+        //             console.log('Num results: ', snapshot.docs.length)
+        //         })
+        //     })
+        .then(snapshot => {
+            // append to a list:
+            snapshot.forEach(doc => {
+                products.push({id: doc.id, data: doc.data()})
+            })
         })
         res.setHeader('Cache-Control', 'private');
         // can pass one object with render
