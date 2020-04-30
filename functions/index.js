@@ -71,16 +71,8 @@ app.get('/', auth, async (req, res) => {  // Arrow: fn def is given directly -- 
     try {
         let products = []
         // this is a query:
-        const snapshot = await coll.orderBy("price", "desc").limit(5).get()
+        const ref = await coll.orderBy("name").get() //.startAt(50000)
         // - - -- -- - - pagination happens here: (?)
-        // let paginate = first.get()
-        //     .then((snapshot) => {
-        //         let last = snapshot.docs[snapshot.docs.length - 1]
-        //         let next = coll.orderBy("price", "desc").startAfter(last.data().population).limit(5)
-        //         return next.get().then((snapshot) => {
-        //             console.log('Num results: ', snapshot.docs.length)
-        //         })
-        //     })
         .then(snapshot => {
             // append to a list:
             snapshot.forEach(doc => {
