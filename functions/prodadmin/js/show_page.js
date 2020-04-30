@@ -23,7 +23,8 @@ async function show_page_secured() {
                         // (look at index types documentation - boookmarked in WSP)
                         // (see: composite index, further down that page)
                         //.where("name", "==", "YYYYYY")
-                        //.orderBy("price")
+                        .orderBy('name')
+                        .limit(5)
                         .get()
 
         // read all the products from the collection
