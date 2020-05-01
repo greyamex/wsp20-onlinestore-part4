@@ -159,6 +159,7 @@ app.get('/b/profile', authAndRedirectSignIn, (req, res) => {
 })
 
 app.get('/b/signup', (req, res) => {
+    cartCount = req.session.cart ? req.session.cart.length : 0
     res.render('signup.ejs', {page: 'signup', user: null, error: false})
 })
 
