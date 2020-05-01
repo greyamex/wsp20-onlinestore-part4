@@ -287,6 +287,7 @@ async function auth(req, res, next) {
 
 app.post('/admin/signup', (req, res) => {
     return adminUtil.createUser(req, res)
+    // send a confirmation email here?
 })
 
 app.get('/admin/sysadmin', authSysAdmin, (req, res) => {
