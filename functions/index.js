@@ -72,7 +72,7 @@ app.get('/', auth, async (req, res) => {  // Arrow: fn def is given directly -- 
         let products = []
         // this is a query:
         const ref = await coll.orderBy("name").get() //.startAt(50000)
-        // - - -- -- - - pagination happens here: (?)
+        // - - -- -- - - pagination happens here: (?) - - -- -- - - - - -- -- - - - - -- -- - - - - -- -- - - 
         .then(snapshot => {
             // append to a list:
             snapshot.forEach(doc => {
