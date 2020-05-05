@@ -71,14 +71,11 @@ app.get('/', auth, async (req, res) => {  // Arrow: fn def is given directly -- 
     try {
         let products = []
         // this is a query:
-        const ref = await coll.orderBy("name").get() //.startAt(50000)
-        // - - -- -- - - pagination happens here: (?) - - -- -- - - - - -- -- - - - - -- -- - - - - -- -- - - 
-        .then(snapshot => {
+        const snapshot = await coll.orderBy("name").get()          /// ***********
             // append to a list:
             snapshot.forEach(doc => {
                 products.push({id: doc.id, data: doc.data()})
             })
-        })
         res.setHeader('Cache-Control', 'private');
         // can pass one object with render
         res.render('storefront.ejs', {error: false, products, user: req.decodedIdToken, cartCount})
@@ -221,6 +218,7 @@ app.post('/b/checkout', authAndRedirectSignIn, async (req, res) => {
     }
 
     try {
+        // await adminUtil.invoiceHtml(req, res)
         await adminUtil.checkOut(data)
         req.session.cart = null;
         res.setHeader('Cache-Control', 'private');
@@ -287,6 +285,10 @@ async function auth(req, res, next) {
 
 app.post('/admin/signup', (req, res) => {
     return adminUtil.createUser(req, res)
+})
+
+app.post('/admin/email', (req, res) => {
+    return adminUtil.email(req, res)
 })
 
 app.get('/admin/sysadmin', authSysAdmin, (req, res) => {
