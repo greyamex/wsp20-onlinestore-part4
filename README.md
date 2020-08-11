@@ -1,6 +1,6 @@
 # Online Store (2020)
 
-This is a web application I built for a web server class in the last semester of my CS Bachelor's program. It is an online store replete with functionality for 
+This is a web application I built for a web server class in the last semester of my CS Bachelor's program. It is an online store replete with functionality for system admins, product admins, and shoppers. Please bear with me as I am still composing the documentation that describes this application's functionality. Thank you.
 <br/><br/>
 
 ## Dev Setup
