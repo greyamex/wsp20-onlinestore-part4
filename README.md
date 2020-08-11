@@ -1,6 +1,7 @@
 # Online Store (2020)
 
 This is a web application I built for a web server class in the last semester of my CS Bachelor's program. It is an online store replete with functionality for 
+<br/>
 
 ## Dev Setup
 
@@ -18,6 +19,7 @@ $flutter serve
 ```
 
 3. Open browser window and go to url: localhost/5001
+<br/>
 
 ## Built With
 
