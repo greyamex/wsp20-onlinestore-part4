@@ -18,7 +18,7 @@ $flutter init
 $flutter serve
 ```
 
-3. Open browser window and go to url: localhost/5001
+3. Open browser window and go to url: ```localhost/5001```
 <br/>
 
 ## Built With
