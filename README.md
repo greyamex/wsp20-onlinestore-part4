@@ -5,7 +5,7 @@ This is a web application I built for a web server class in the last semester of
 ## Dev Setup
 
 ``` bash
-To run you need to execute the following in the terminal:
+To run you need to execute the following /in the terminal:
 
 1. If setting up for the first time on a machine:
 $flutter login
